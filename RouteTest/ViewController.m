@@ -40,16 +40,15 @@
         for (NSObject *route in routes) {
             if ([[route valueForKey:@"routeName"] isEqualToString:kAirPlayRouterName]) {
                 NSLog(@"Calling function to pick route...");
-                BOOL pickRoute = [routingController pickRoute:route];
-                if (pickRoute == NO) {
-                    NSLog(@"Error picking route!");
+                BOOL routePicked = [route valueForKey:@"picked"];
+                if (!routePicked) {
+                    BOOL pickRoute = [routingController pickRoute:route];
+                    if (pickRoute == NO) {
+                        NSLog(@"Error picking route!");
+                    }
                 }
                 else {
-                    BOOL routePicked = [route valueForKey:@"picked"];
-                    if (routePicked == YES) {
-                        NSLog(@"Route picked successfully!");
-                        self.routingController = nil;
-                    }
+                    NSLog(@"Route has been picked successfully!");
                 }
             }
         }
