@@ -20,6 +20,6 @@ static NSString * const kAirPlayRouterName = @"Apple TV";
 
 - (void)clearCachedRoutes;
 - (void)fetchAvailableRoutesWithCompletionHandler:(void(^)(NSArray *routes))completion;
-- (BOOL)pickRoute:(id)arg1;
+- (BOOL)pickRoute:(id)arg1 withPassword:(id)arg2;
 
 @end

@@ -42,13 +42,16 @@
                 NSLog(@"Calling function to pick route...");
                 BOOL routePicked = [[route valueForKey:@"picked"] boolValue];
                 if (!routePicked) {
-                    BOOL pickRoute = [routingController pickRoute:route];
-                    if (pickRoute == NO) {
-                        NSLog(@"Error picking route!");
+                    BOOL pickRoute = [routingController pickRoute:route withPassword:nil];
+                    if (pickRoute == YES) {
+                        NSLog(@"pickRoute:withPassword: returned with success!");
+                    }
+                    else {
+                        NSLog(@"pickRoute:withPassword: returned with failure!");
                     }
                 }
                 else {
-                    NSLog(@"Route has been picked successfully!");
+                    NSLog(@"Route has been selected successfully!");
                 }
             }
         }
